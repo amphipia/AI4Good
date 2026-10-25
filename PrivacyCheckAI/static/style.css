@@ -1,0 +1,593 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family:
+        Inter,
+        Arial,
+        sans-serif;
+
+    background: #f4f6f8;
+    color: #1f2937;
+}
+
+
+.topbar {
+    background: #111827;
+    color: white;
+
+    padding: 24px;
+}
+
+
+.topbar h1 {
+    margin: 0;
+    font-size: 28px;
+}
+
+
+.topbar p {
+    margin: 6px 0 0;
+    color: #d1d5db;
+}
+
+
+.container {
+    max-width: 1000px;
+    margin: 30px auto;
+    padding: 0 20px 60px;
+}
+
+
+.card {
+    background: white;
+
+    border-radius: 14px;
+
+    padding: 24px;
+
+    margin-bottom: 22px;
+
+    box-shadow:
+        0 3px 14px
+        rgba(0, 0, 0, 0.07);
+}
+
+
+.hidden {
+    display: none;
+}
+
+
+.upload-card h2 {
+    margin-top: 0;
+}
+
+
+.drop-zone {
+    margin-top: 16px;
+
+    border: 2px dashed #9ca3af;
+
+    border-radius: 12px;
+
+    padding: 30px;
+
+    text-align: center;
+
+    color: #6b7280;
+
+    transition: 0.2s;
+}
+
+
+.drop-zone.dragging {
+    background: #eef6ff;
+    border-color: #2563eb;
+}
+
+
+.section-header {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 15px;
+
+    margin-bottom: 20px;
+}
+
+
+.primary-button,
+.protect-button,
+.download-button {
+
+    border: none;
+
+    border-radius: 9px;
+
+    padding: 12px 20px;
+
+    cursor: pointer;
+
+    font-size: 15px;
+
+    font-weight: 600;
+}
+
+
+.primary-button {
+    background: #2563eb;
+    color: white;
+}
+
+
+.primary-button:hover {
+    background: #1d4ed8;
+}
+
+
+.protect-button {
+    background: #059669;
+    color: white;
+
+    font-size: 17px;
+
+    padding: 14px 28px;
+}
+
+
+.protect-button:hover {
+    background: #047857;
+}
+
+
+.download-button {
+
+    display: inline-block;
+
+    margin-top: 18px;
+
+    background: #111827;
+    color: white;
+
+    text-decoration: none;
+}
+
+
+.image-container {
+
+    width: 100%;
+
+    display: flex;
+
+    justify-content: center;
+
+    overflow: auto;
+
+    background: #111827;
+
+    border-radius: 12px;
+
+    padding: 12px;
+}
+
+
+#imageCanvas,
+#protectedImage {
+
+    max-width: 100%;
+
+    max-height: 650px;
+
+    object-fit: contain;
+}
+
+
+.results-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(260px, 1fr)
+        );
+
+    gap: 18px;
+
+    margin-top: 18px;
+}
+
+
+.finding-card {
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 12px;
+
+    padding: 18px;
+}
+
+
+.finding-title {
+
+    font-size: 18px;
+
+    font-weight: 700;
+
+    margin-bottom: 12px;
+}
+
+
+.result-row {
+
+    padding: 7px 0;
+
+    border-bottom:
+        1px solid #f3f4f6;
+}
+
+
+.result-row:last-child {
+    border-bottom: none;
+}
+
+
+.detected {
+    color: #b45309;
+    font-weight: 600;
+}
+
+
+.clear {
+    color: #059669;
+    font-weight: 600;
+}
+
+
+.protect-area {
+
+    margin-top: 28px;
+
+    padding-top: 20px;
+
+    border-top: 1px solid #e5e7eb;
+
+    text-align: center;
+}
+
+
+.protect-description {
+
+    color: #6b7280;
+
+    font-size: 14px;
+}
+
+
+.safe-banner {
+
+    padding: 12px;
+
+    margin-bottom: 18px;
+
+    border-radius: 8px;
+
+    background: #ecfdf5;
+
+    color: #047857;
+
+    font-weight: 600;
+}
+
+
+.scanning {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+}
+
+
+.spinner {
+
+    width: 22px;
+    height: 22px;
+
+    border:
+        3px solid #e5e7eb;
+
+    border-top-color: #2563eb;
+
+    border-radius: 50%;
+
+    animation:
+        spin 0.8s linear infinite;
+}
+
+.face-option {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 12px;
+
+    margin-top: 8px;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+}
+
+
+.face-option:hover {
+
+    background: #f9fafb;
+
+}
+
+
+.face-checkbox {
+
+    width: 20px;
+    height: 20px;
+
+    cursor: pointer;
+
+}
+
+
+.face-selection-actions {
+
+    margin: 14px 0;
+
+    display: flex;
+
+    gap: 8px;
+
+}
+
+
+.small-button {
+
+    padding: 6px 10px;
+
+    border: 1px solid #d1d5db;
+
+    border-radius: 6px;
+
+    background: white;
+
+    cursor: pointer;
+
+}
+
+
+.small-button:hover {
+
+    background: #f3f4f6;
+
+}
+
+.qr-option {
+
+    padding: 12px;
+
+    margin-top: 8px;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 8px;
+
+}
+
+
+.qr-option label {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    cursor: pointer;
+
+}
+
+
+.qr-checkbox {
+
+    width: 20px;
+    height: 20px;
+
+    cursor: pointer;
+
+}
+
+
+.qr-type {
+
+    margin-top: 7px;
+
+    color: #6b7280;
+
+    font-size: 14px;
+
+}
+
+
+.show-qr-button {
+
+    margin-top: 9px;
+
+    border: none;
+
+    background: none;
+
+    color: #2563eb;
+
+    padding: 0;
+
+    cursor: pointer;
+
+    font-size: 13px;
+
+}
+
+
+.qr-content {
+
+    margin-top: 8px;
+
+    padding: 8px;
+
+    border-radius: 6px;
+
+    background: #f3f4f6;
+
+    font-family: monospace;
+
+    font-size: 12px;
+
+    overflow-wrap: anywhere;
+}
+
+.text-option {
+
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 12px;
+
+    padding: 12px;
+
+    margin-top: 8px;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+}
+
+
+.text-option:hover {
+
+    background: #f9fafb;
+
+}
+
+
+.text-checkbox {
+
+    width: 20px;
+    height: 20px;
+
+    margin-top: 2px;
+
+    cursor: pointer;
+}
+
+
+.sensitive-value {
+
+    color: #6b7280;
+
+    font-family: monospace;
+
+    font-size: 13px;
+
+    overflow-wrap: anywhere;
+}
+
+.plate-option {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 12px;
+
+    margin-top: 8px;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+}
+
+
+.plate-option:hover {
+
+    background: #f9fafb;
+
+}
+
+
+.plate-checkbox {
+
+    width: 20px;
+    height: 20px;
+
+    cursor: pointer;
+}
+
+#scanProgressItems {
+
+    margin-top: 12px;
+
+    display: grid;
+
+    gap: 5px;
+}
+
+
+.scan-complete {
+    color: #059669;
+}
+
+
+.scan-error {
+    color: #b45309;
+}
+
+@keyframes spin {
+
+    to {
+        transform: rotate(360deg);
+    }
+
+}
+
+
+@media (
+    max-width: 600px
+) {
+
+    .section-header {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .primary-button {
+        width: 100%;
+    }
+
+}

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>PrivChk AI</title>
+
+    <link
+        rel="stylesheet"
+        href="/static/style.css"
+    >
+</head>
+
+<body>
+
+    <header class="topbar">
+
+        <div>
+            <h1>PrivChk AI</h1>
+            <p>
+                Check what you're sharing
+                before you share it.
+            </p>
+        </div>
+
+    </header>
+
+
+    <main class="container">
+
+        <section class="card upload-card">
+
+            <h2>Select a photo</h2>
+
+            <input
+                type="file"
+                id="fileInput"
+                accept="image/jpeg,image/png"
+            >
+
+            <div
+                id="dropZone"
+                class="drop-zone"
+            >
+                <p>
+                    Drag a photo here
+                    or choose a file above.
+                </p>
+            </div>
+
+        </section>
+
+
+        <section
+            id="previewSection"
+            class="card hidden"
+        >
+
+            <div class="section-header">
+
+                <h2>Photo preview</h2>
+
+                <button
+                    id="scanButton"
+                    class="primary-button"
+                >
+                    Scan Photo
+                </button>
+
+            </div>
+
+
+            <div class="image-container">
+
+                <canvas
+                    id="imageCanvas"
+                ></canvas>
+
+            </div>
+
+        </section>
+
+
+		<section
+			id="scanStatus"
+			class="card hidden"
+			tabindex="-1"
+			aria-live="polite"
+		>
+			<div class="scanning">
+
+				<div class="spinner"></div>
+
+				<div class="scan-progress">
+
+					<strong>
+						PrivChk is scanning your photo...
+					</strong>
+
+					<div id="scanProgressItems">
+
+						<div id="statusMetadata">
+							⟳ Metadata
+						</div>
+
+						<div id="statusFaces">
+							⟳ Faces
+						</div>
+
+						<div id="statusQR">
+							⟳ QR codes
+						</div>
+
+						<div id="statusText">
+							⟳ Personal information
+						</div>
+
+						<div id="statusPlates">
+							⟳ License plates
+						</div>
+
+					</div>
+
+				</div>
+
+			</div>
+		</section>
+
+
+        <section
+            id="resultsSection"
+            class="card hidden"
+        >
+
+            <h2>Privacy findings</h2>
+
+            <div class="results-grid">
+
+                <div class="finding-card">
+
+                    <div class="finding-title">
+                        📍 Metadata
+                    </div>
+
+                    <div id="metadataResults">
+                        Not scanned
+                    </div>
+
+                </div>
+
+
+                <div class="finding-card">
+
+                    <div class="finding-title">
+                        👤 Possible faces
+                    </div>
+
+                    <div id="faceResults">
+                        Not scanned
+                    </div>
+
+                </div>
+
+				<div class="finding-card">
+
+					<div class="finding-title">
+						▣ QR codes
+					</div>
+
+					<div id="qrResults">
+						Not scanned
+					</div>
+
+				</div>				
+
+				<div class="finding-card">
+
+					<div class="finding-title">
+						🔐 Personal information
+					</div>
+
+					<div id="textResults">
+						Not scanned
+					</div>
+
+				</div>
+				<div class="finding-card">
+
+					<div class="finding-title">
+						🚗 License plates
+					</div>
+
+					<div id="plateResults">
+						Not scanned
+					</div>
+
+				</div>
+				
+            </div>
+
+
+            <div class="protect-area">
+
+                <button
+                    id="protectButton"
+                    class="protect-button"
+                >
+                    Protect Photo
+                </button>
+
+                <p class="protect-description">
+                    Removes image metadata and protects selected faces, QR codes, personal information, and license plates.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <section
+            id="protectedSection"
+            class="card hidden"
+			tabindex="-1"
+        >
+
+            <h2>Protected copy</h2>
+
+            <div id="protectionSummary" class="safe-banner">
+                ✓ PrivChk protection applied
+            </div>
+
+            <div class="image-container">
+
+                <img
+                    id="protectedImage"
+                    alt="Protected photo"
+                >
+
+            </div>
+
+
+            <a
+                id="downloadButton"
+                class="download-button"
+                download="PrivChk_protected.jpg"
+            >
+                Download Protected Copy
+            </a>
+
+        </section>
+
+    </main>
+
+
+    <script src="/static/app.js"></script>
+
+</body>
+
+</html>
